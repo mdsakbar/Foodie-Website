@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodie - Fast Food Restaurant</title>
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-utensils"></i> Foodie
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-icons">
+        <button onclick="openLogin()" class="login-btn">
+          <i class="fa-regular fa-user"></i>
+        </button>
+
+        <button onclick="openCart()" class="cart-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="cart-count">0</span>
+        </button>
+
+        <button class="menu-toggle" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-content container">
+
+      <div class="hero-text">
+        <p class="small-title">WELCOME TO FOODIE</p>
+
+        <h1>
+          Enjoy Your Favorite
+          <span>Fast Food</span>
+        </h1>
+
+        <p>
+          Delicious food made with fresh ingredients.
+          Order your favorite meals quickly and easily.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#menu" class="btn">Order Now</a>
+          <a href="#about" class="btn secondary">Learn More</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="food-circle">
+          🍔
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="container">
+
+      <div class="section-title">
+        <p>OUR SERVICES</p>
+        <h2>What We Offer</h2>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <i class="fa-solid fa-truck-fast"></i>
+          <h3>Fast Delivery</h3>
+          <p>
+            Get your favorite food delivered quickly
+            to your doorstep.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <i class="fa-solid fa-burger"></i>
+          <h3>Quality Food</h3>
+          <p>
+            Fresh ingredients and delicious food
+            prepared with care.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <i class="fa-solid fa-headset"></i>
+          <h3>24/7 Support</h3>
+          <p>
+            Our support team is always ready
+            to help you.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Menu -->
+  <section id="menu" class="section menu-section">
+    <div class="container">
+
+      <div class="section-title">
+        <p>OUR MENU</p>
+        <h2>Popular Food</h2>
+      </div>
+
+      <div class="filter-buttons">
+        <button class="active" onclick="filterMenu('all', this)">
+          All
+        </button>
+
+        <button onclick="filterMenu('burger', this)">
+          Burgers
+        </button>
+
+        <button onclick="filterMenu('pizza', this)">
+          Pizza
+        </button>
+
+        <button onclick="filterMenu('drink', this)">
+          Drinks
+        </button>
+
+        <button onclick="filterMenu('fries', this)">
+          Fries
+        </button>
+      </div>
+
+
+      <div class="menu-grid" id="menu-grid">
+
+        <div class="food-card" data-category="burger">
+          <div class="food-image">🍔</div>
+
+          <h3>Classic Burger</h3>
+
+          <p>
+            Crispy patty, fresh vegetables and
+            special sauce.
+          </p>
+
+          <div class="food-bottom">
+            <strong>₹149</strong>
+
+            <button onclick="addToCart('Classic Burger',149)">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+
+
+        <div class="food-card" data-category="burger">
+          <div class="food-image">🍔</div>
+
+          <h3>Cheese Burger</h3>
+
+          <p>
+            Juicy burger topped with melted cheese.
+          </p>
+
+          <div class="food-bottom">
+            <strong>₹179</strong>
+
+            <button onclick="addToCart('Cheese Burger',179)">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+
+
+        <div class="food-card" data-category="pizza">
+          <div class="food-image">🍕</div>
+
+          <h3>Cheese Pizza</h3>
+
+          <p>
+            Freshly baked pizza with extra cheese.
+          </p>
+
+          <div class="food-bottom">
+            <strong>₹249</strong>
+
+            <button onclick="addToCart('Cheese Pizza',249)">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+
+
+        <div class="food-card" data-category="pizza">
+          <div class="food-image">🍕</div>
+
+          <h3>Veggie Pizza</h3>
+
+          <p>
+            Fresh vegetables, cheese and special herbs.
+          </p>
+
+          <div class="food-bottom">
+            <strong>₹229</strong>
+
+            <button onclick="addToCart('Veggie Pizza',229)">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+
+
+        <div class="food-card" data-category="fries">
+          <div class="food-image">🍟</div>
+
+          <h3>French Fries</h3>
+
+          <p>
+            Crispy golden fries with delicious seasoning.
+          </p>
+
+          <div class="food-bottom">
+            <strong>₹99</strong>
+
+            <button onclick="addToCart('French Fries',99)">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+
+
+        <div class="food-card" data-category="drink">
+          <div class="food-image">🥤</div>
+
+          <h3>Cold Drink</h3>
+
+          <p>
+            Refreshing chilled soft drink.
+          </p>
+
+          <div class="food-bottom">
+            <strong>₹69</strong>
+
+            <button onclick="addToCart('Cold Drink',69)">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- About -->
+  <section id="about" class="section about">
+    <div class="container about-container">
+
+      <div class="about-image">
+        🍽️
+      </div>
+
+      <div class="about-text">
+        <p class="small-title">ABOUT US</p>
+
+        <h2>We Serve Delicious Food</h2>
+
+        <p>
+          Foodie is a modern fast-food restaurant website
+          designed to provide customers with a simple and
+          convenient online ordering experience.
+        </p>
+
+        <p>
+          Browse our menu, add your favorite food to the
+          cart and place your order easily.
+        </p>
+
+        <a href="#menu" class="btn">Explore Menu</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Reviews -->
+  <section class="section reviews">
+    <div class="container">
+
+      <div class="section-title">
+        <p>CUSTOMER REVIEWS</p>
+        <h2>What Customers Say</h2>
+      </div>
+
+      <div class="review-grid">
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+
+          <p>
+            "The food was delicious and the ordering
+            experience was very easy."
+          </p>
+
+          <h3>Rahul Sharma</h3>
+        </div>
+
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+
+          <p>
+            "Amazing burgers and fast delivery.
+            Highly recommended!"
+          </p>
+
+          <h3>Priya Singh</h3>
+        </div>
+
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+
+          <p>
+            "Great food quality and very user-friendly
+            website."
+          </p>
+
+          <h3>Aman Verma</h3>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container newsletter-content">
+
+      <div>
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Get updates about new dishes and offers.</p>
+      </div>
+
+      <form onsubmit="subscribe(event)">
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        >
+
+        <button type="submit" class="btn">
+          Subscribe
+        </button>
+      </form>
+
+    </div>
+  </section>
+
+
+  <!-- Contact -->
+  <section id="contact" class="section contact">
+    <div class="container">
+
+      <div class="section-title">
+        <p>CONTACT US</p>
+        <h2>Get In Touch</h2>
+      </div>
+
+      <div class="contact-grid">
+
+        <div class="contact-info">
+
+          <div>
+            <i class="fa-solid fa-location-dot"></i>
+
+            <div>
+              <h3>Address</h3>
+              <p>123 Food Street, India</p>
+            </div>
+          </div>
+
+
+          <div>
+            <i class="fa-solid fa-phone"></i>
+
+            <div>
+              <h3>Phone</h3>
+              <p>+91 98765 43210</p>
+            </div>
+          </div>
+
+
+          <div>
+            <i class="fa-solid fa-envelope"></i>
+
+            <div>
+              <h3>Email</h3>
+              <p>info@foodie.com</p>
+            </div>
+          </div>
+
+        </div>
+
+
+        <form class="contact-form" onsubmit="sendMessage(event)">
+
+          <input
+            type="text"
+            placeholder="Your Name"
+            required
+          >
+
+          <input
+            type="email"
+            placeholder="Your Email"
+            required
+          >
+
+          <textarea
+            rows="6"
+            placeholder="Your Message"
+            required
+          ></textarea>
+
+          <button class="btn" type="submit">
+            Send Message
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+
+      <div>
+        <a href="#" class="logo">
+          <i class="fa-solid fa-utensils"></i> Foodie
+        </a>
+
+        <p>
+          Delicious food delivered to your doorstep.
+        </p>
+      </div>
+
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Foodie. All Rights Reserved.(Developed by Akbar)
+    </div>
+  </footer>
+
+
+  <!-- Cart Modal -->
+  <div class="modal" id="cart-modal">
+
+    <div class="modal-content">
+
+      <button class="close" onclick="closeCart()">×</button>
+
+      <h2>Your Cart</h2>
+
+      <div id="cart-items"></div>
+
+      <div class="cart-total">
+        <strong>Total:</strong>
+        <span>₹<span id="cart-total">0</span></span>
+      </div>
+
+      <button class="btn checkout-btn" onclick="checkout()">
+        Checkout
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- Login Modal -->
+  <div class="modal" id="login-modal">
+
+    <div class="modal-content">
+
+      <button class="close" onclick="closeLogin()">×</button>
+
+      <h2>Sign In</h2>
+
+      <form onsubmit="login(event)">
+
+        <input
+          type="email"
+          placeholder="Email Address"
+          required
+        >
+
+        <input
+          type="password"
+          placeholder="Password"
+          required
+        >
+
+        <button class="btn" type="submit">
+          Sign In
+        </button>
+
+      </form>
+
+      <p class="signup-text">
+        Don't have an account?
+        <a href="#" onclick="showSignup()">Sign Up</a>
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- Signup Modal -->
+  <div class="modal" id="signup-modal">
+
+    <div class="modal-content">
+
+      <button class="close" onclick="closeSignup()">×</button>
+
+      <h2>Create Account</h2>
+
+      <form onsubmit="signup(event)">
+
+        <input
+          type="text"
+          placeholder="Full Name"
+          required
+        >
+
+        <input
+          type="email"
+          placeholder="Email Address"
+          required
+        >
+
+        <input
+          type="password"
+          placeholder="Password"
+          required
+        >
+
+        <button class="btn" type="submit">
+          Create Account
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
